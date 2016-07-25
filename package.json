@@ -1,0 +1,63 @@
+{
+  "name": "revealer",
+  "version": "1.0.0",
+  "description": "develop reveal.js presentations happily, without redundant source or boilerplate",
+  "main": "src/index.js",
+  "bin": {
+    "revealer": "src/bin.js"
+  },
+  "scripts": {
+    "test": "node test/",
+    "lint": "standard \"src/**/*.js\" \"test/**/*.js\"",
+    "lintfix": "standard-format -w",
+    "validate": "npm ls",
+    "preversion": "git checkout master && git pull && npm ls",
+    "docs": "mkdir -p docs && jsdoc -c .jsdoc.json src/",
+    "deploy-docs": "gh-pages -d docs && rm -rf docs",
+    "postpublish": "npm run docs && npm run deploy-docs",
+    "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
+    "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
+    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdaringe/revealer.git"
+  },
+  "keywords": [
+    "reveal.js",
+    "presentation",
+    "boilerplate"
+  ],
+  "author": "cdaringe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cdaringe/revealer/issues"
+  },
+  "homepage": "https://github.com/cdaringe/revealer#readme",
+  "pre-commit": [
+    "validate",
+    "lint",
+    "test"
+  ],
+  "devDependencies": {
+    "gh-pages": "^0.11.0",
+    "jsdoc": "^3.4.0",
+    "minami": "^1.1.1",
+    "nyc": "^7.0.0",
+    "shizam": "0.0.5",
+    "standard": "^7.1.2",
+    "standard-format": "^2.2.2",
+    "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "app-root-path": "^1.3.0",
+    "chokidar": "^1.6.0",
+    "commander": "^2.9.0",
+    "fs-extra": "^0.30.0",
+    "mkdirp": "^0.5.1",
+    "perish": "0.0.3"
+  },
+  "peerDependencies": {
+    "reveal.js": "*"
+  }
+}
