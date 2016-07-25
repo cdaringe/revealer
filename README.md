@@ -44,7 +44,7 @@ rvlr.watch()
 rvlr.serve()
 ```
 
-<big>**official API docs live [here](cdaringe.github.io/revealer)**</big>
+<big>**official API docs live [here](https://cdaringe.github.io/revealer/)**</big>
 
 # why
 
