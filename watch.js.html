@@ -62,7 +62,7 @@ module.exports = () => {
   if (!dirStat.isDirectory()) throw new Error(`--watch [dir] passed an invalid directory: ${app.SRC_DIR}`)
   chokidar.watch(app.SRC_DIR)
   .on('change', (event, path) => {
-    console.log('presentation change detected... updating reveal.js source', path)
+    console.log('presentation change detected... updating reveal.js source')
     stage.presentation()
   })
 }
