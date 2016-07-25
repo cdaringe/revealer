@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li><li><a href="module-watch.html">watch</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>revealer</h1><h2>what</h2><p>build pure reveal.js presentations without cruft <em>or</em> cognitive overload.</p>
+<h2>how</h2><blockquote>
+<blockquote>
+<p>insert GIF</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>install, <code>npm i --save reveal.js revealer</code></li>
+<li>create some presentation content to serve. for example, we will use the reveal.js demo presentation.<ul>
+<li><code>mkdir -p src/</code></li>
+<li><code>cp node_modules/reveal.js/index.html ./src/</code></li>
+</ul>
+</li>
+<li>run revealer, <code>./node_modules/.bin/revealer --watch --serve</code></li>
+</ul>
+<p>you can modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no crufy, just your presentation package.json and your presentation source content.</p>
+<pre class="prettyprint source"><code>+ {project-root}
+├───node_modules
+├───package.json
+├───src</code></pre><p>:game_die::game_die::game_die::game_die::game_die: yahtzee!</p>
+<p>let me use <code>revealer</code> programmatically you say.  no problem.</p>
+<pre class="prettyprint source lang-js"><code>'use strict'
+
+const rvlr = require('revealer')
+const path = require('path')
+
+// copy reveal.js content (from node_modules) into ./staging
+// copy your presentation `./src` into `./staging`
+rvlr.stage.all()
+
+// watch your `./src` for changes. deploy changes to `./staging`
+rvlr.watch()
+
+// run the reveal.js content server.  livereloads against  watched content
+rvlr.serve()</code></pre><big><strong>official API docs live <a href="cdaringe.github.io/revealer">here</a></strong></big>
+
+<h1>why</h1><p>starting a reveal.js project should be as simple as <code>npm install reveal.js</code>, authoring some content, and hitting the go-button.  unfortunately, there's more to it.</p>
+<p>reveal.js is amazing.  however, when it's time to actually build a presentation, your choices to quickly scaffold a presentation are both less-than-ideal.  your two primary options to start building a presentation begin with either:</p>
+<ol>
+<li>clone and hack the reveal.js source, or</li>
+<li>use the npm package</li>
+</ol>
+<p>let's discuss these strategies, then discuss <code>revealer</code>'s solution to the cons on both sides.</p>
+<h3>the ol' clone-n-hack</h3><p><strong>option #1</strong>.  the reveal.js source code comes with a great set of rails.  it's packed with valuable css, plugins, and tooling to get your developing your presentation quickly (e.g. file server &amp; live reload).  however, cloning a repo then modifying it isn't really a great way to use a <em>library</em>.  instead of consuming it as a library, you end up using it as a standalone application.  what are this strategy's weaknesses?</p>
+<ol>
+<li>what happens when you need upstream updates? merge conflicts are almost guaranteed, at some point.</li>
+<li>how does your presentation repository structure look? it looks like the reveal.js source code, not simply your precious presentation content.  this yields some degree complication &amp; misdirection.</li>
+</ol>
+<p>many reveal.js projects choose this path.</p>
+<h3>consume the npm package</h3><p><strong>option #2</strong>. <code>npm install reveal.js</code> <em>is a thing</em>.  you can install it as a dependency.  however, when done so, you no longer have rails.  the helpful reveal.js assets are still nested inside of <code>node_modules/reveal.js/...</code>, but you don't have a runable solution ready to go.  that is to say, the ease of developing a presentation suddenly becomes much more difficult.  you need to manually construct your page, your assets, and development workflow, vs. using those which reveal.js already provides for you. these bells and whistles don't need to be redesigned--reveal.js' workflow is just fine!  some projects, like <a href="https://github.com/Retozi/reveal-boilerplate">reveal-boilerplate</a>, do <em>rewire</em> up a set of assets into a full presentation, using reveal.js as a pure library, BUT, is it worth reimplementing all of the reveal.js tooling again in <em>your</em> project?  i'd wager that it's probably not worth the effort.</p>
+<h3>give me the best of both worlds, please!</h3><p>here's what we want:</p>
+<ul>
+<li>quick setup time for a reveal.js project</li>
+<li>to use reveal.js as a dependency, and permit rolling version updates</li>
+<li>to keep our project source looking like <em>just</em> our source, not the reveal.js source</li>
+<li>to keep maintain ease of use, keeping the reveal.js rails intact.  that is, make  plugins/css/tooling that ship with reveal.js accessible</li>
+</ul>
+<p>revealer achieves these goals. specifically, it:</p>
+<ul>
+<li>installs <code>reveal.js</code>'s dev dependencies</li>
+<li>watches your <code>src</code> dir, and copies them into the <code>reveal.js</code> package src</li>
+<li>runs <code>reveal.js</code>'s server-watcher-browser-launcher tooling.</li>
+</ul>
+<p>yahoo!</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
