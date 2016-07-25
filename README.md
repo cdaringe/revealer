@@ -4,9 +4,9 @@
 
 build pure reveal.js presentations without cruft _or_ cognitive overload.
 
-## how
+![](./img/revealer.png)
 
->> insert GIF
+## how
 
 - install, `npm i --save reveal.js revealer`
 - create some presentation content to serve. for example, we will use the reveal.js demo presentation.
@@ -14,7 +14,7 @@ build pure reveal.js presentations without cruft _or_ cognitive overload.
   - `cp node_modules/reveal.js/index.html ./src/`
 - run revealer, `./node_modules/.bin/revealer --watch --serve`
 
-you can modify your content in `src`, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no crufy, just your presentation package.json and your presentation source content.
+you can modify your content in `src`, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!
 
 ```
 + {project-root}
