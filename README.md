@@ -4,7 +4,7 @@
 
 build pure reveal.js presentations without cruft _or_ cognitive overload.
 
-![](./img/revealer.png)
+<img width="600px" src="https://raw.githubusercontent.com/cdaringe/revealer/master/img/revealer.png"></img>
 
 ## how
 
