@@ -1,6 +1,6 @@
 {
   "name": "revealer",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "develop reveal.js presentations happily, without redundant source or boilerplate",
   "main": "src/index.js",
   "bin": {
@@ -44,6 +44,7 @@
     "jsdoc": "^3.4.0",
     "minami": "^1.1.1",
     "nyc": "^7.0.0",
+    "reveal.js": "^3.3.0",
     "shizam": "0.0.5",
     "standard": "^7.1.2",
     "standard-format": "^2.2.2",
