@@ -12,7 +12,8 @@ const cp = require('child_process')
 const app = require('./app')
 const fs = require('fs-extra')
 
-module.exports = () => {
+module.exports = (buildDir) => {
+  buildDir = buildDir || app.BUILD_DIR
   if (app.verbose) console.log('building presentation via reveal.js')
   const server = cp.spawn('grunt', ['css', 'uglify'], { stdio: 'inherit', cwd: app.REVEAL_DIR })
   server.on('error', (err) => { throw err })
@@ -26,11 +27,11 @@ module.exports = () => {
   const copyBuilt = (code) => {
     if (code) return cleanExit(code)
 
-    fs.removeSync(app.BUILD_DIR)
-    fs.mkdirpSync(app.BUILD_DIR, { cwd: app.APP_ROOT })
+    fs.removeSync(buildDir)
+    fs.mkdirpSync(buildDir, { cwd: app.APP_ROOT })
     const toCopy = [ 'css', 'js', 'lib', 'plugin' ]
-    toCopy.forEach((dir) => fs.copySync(`${app.REVEAL_DIR}/${dir}`, `${app.BUILD_DIR}/${dir}`))
-    fs.copySync(app.SRC_DIR, app.BUILD_DIR)
+    toCopy.forEach((dir) => fs.copySync(`${app.REVEAL_DIR}/${dir}`, `${buildDir}/${dir}`))
+    fs.copySync(app.SRC_DIR, buildDir)
     return cleanExit(code)
   }
 

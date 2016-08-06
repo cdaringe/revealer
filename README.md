@@ -12,7 +12,7 @@ build pure reveal.js presentations without cruft _or_ cognitive overload.
 - create some presentation content to serve. for example, we will use the reveal.js demo presentation.
   - `mkdir -p src/`
   - `cp node_modules/reveal.js/index.html ./src/`
-- run revealer, `./node_modules/.bin/revealer --watch --serve`
+- run revealer, `revealer --watch --serve` (_./node_modules/.bin/revealer_ if you're not using npm scripts)
 
 you can modify your content in `src`, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!
 
@@ -42,6 +42,10 @@ rvlr.watch()
 
 // run the reveal.js content server.  livereloads against  watched content
 rvlr.serve()
+
+// build! static assets can be served from `build/` dir
+rvlr.build() // optional arg for dir to build into
+
 ```
 
 <big>**official API docs live [here](https://cdaringe.github.io/revealer/)**</big>
