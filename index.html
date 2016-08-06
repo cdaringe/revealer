@@ -56,7 +56,7 @@
 <li><code>cp node_modules/reveal.js/index.html ./src/</code></li>
 </ul>
 </li>
-<li>run revealer, <code>./node_modules/.bin/revealer --watch --serve</code></li>
+<li>run revealer, <code>revealer --watch --serve</code> (_./node<em>modules/.bin/revealer</em> if you're not using npm scripts)</li>
 </ul>
 <p>you can modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!</p>
 <pre class="prettyprint source"><code>+ {project-root}
@@ -77,7 +77,10 @@ rvlr.stage.all()
 rvlr.watch()
 
 // run the reveal.js content server.  livereloads against  watched content
-rvlr.serve()</code></pre><big><strong>official API docs live <a href="https://cdaringe.github.io/revealer/">here</a></strong></big>
+rvlr.serve()
+
+// build! static assets can be served from `build/` dir
+rvlr.build() // optional arg for dir to build into</code></pre><big><strong>official API docs live <a href="https://cdaringe.github.io/revealer/">here</a></strong></big>
 
 <h1>why</h1><p>starting a reveal.js project should be as simple as <code>npm install reveal.js</code>, authoring some content, and hitting the go-button.  unfortunately, there's more to it.</p>
 <p>reveal.js is amazing.  however, when it's time to actually build a presentation, your choices to quickly scaffold a presentation are both less-than-ideal.  your two primary options to start building a presentation begin with either:</p>
