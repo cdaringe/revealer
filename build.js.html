@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li><li><a href="module-watch.html">watch</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
 </nav>
 
 <div id="main">
@@ -51,15 +51,16 @@
 const cp = require('child_process')
 const app = require('./app')
 const fs = require('fs-extra')
+const logger = require('./logger')
 
 module.exports = (buildDir) => {
   buildDir = buildDir || app.BUILD_DIR
-  if (app.verbose) console.log('building presentation via reveal.js')
+  if (app.verbose) logger.verbose('building presentation via reveal.js')
   const server = cp.spawn('grunt', ['css', 'uglify'], { stdio: 'inherit', cwd: app.REVEAL_DIR })
   server.on('error', (err) => { throw err })
 
   const cleanExit = (code) => {
-    if (app.verbose) console.log('exiting build process')
+    if (app.verbose) logger.verbose('exiting build process')
     try { server.kill('SIGINT') } catch (err) { /* pass */ }
     process.exit(code)
   }

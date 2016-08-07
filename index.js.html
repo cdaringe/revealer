@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li><li><a href="module-watch.html">watch</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
 </nav>
 
 <div id="main">
@@ -49,12 +49,11 @@ require('./app') // parse cli onload
 /**
  * @namespace
  * @property {object} stage exposes the stage module
- * @property {function} watch exposes the watch function
  * @property {function} serve exposes the server function
+ * @property {function} build builds the presentation into the build dir. statically servable site.
  */
 module.exports = {
   stage: require('./stage'),
-  watch: require('./watch'),
   serve: require('./serve'),
   build: require('./build'),
 }

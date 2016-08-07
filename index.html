@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li><li><a href="module-watch.html">watch</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
 </nav>
 
 <div id="main">
@@ -75,10 +75,7 @@ const path = require('path')
 // copy your presentation `./src` into `./staging`
 rvlr.stage.all()
 
-// watch your `./src` for changes. deploy changes to `./staging`
-rvlr.watch()
-
-// run the reveal.js content server.  livereloads against  watched content
+// run the reveal.js content server.  livereloads against  watched source content
 rvlr.serve()
 
 // build! static assets can be served from `build/` dir
