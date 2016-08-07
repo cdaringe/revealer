@@ -1,7 +1,9 @@
 /**
  * watches your presentation source, then, onchange, copies it to the reveal.js
- * serve path, where it can be served manually or hotreloaded (see serve module)
+ * serve path, where it can be served manually or hotreloaded (see serve module).
+ * internal api used by `serve`
  * @module watch
+ * @private
  */
 
 'use strict'
@@ -10,19 +12,12 @@ const app = require('./app')
 const chokidar = require('chokidar')
 const fs = require('fs')
 const stage = require('./stage')
+const logger = require('./logger')
 
 module.exports = () => {
-  let dirStat
-  try {
-    dirStat = fs.lstatSync(app.SRC_DIR)
-  } catch (err) {
-    console.error(`unable to watch directory: ${app.SRC_DIR || 'no directory specified to --watch'}`)
-    throw err
-  }
-  if (!dirStat.isDirectory()) throw new Error(`--watch [dir] passed an invalid directory: ${app.SRC_DIR}`)
   chokidar.watch(app.SRC_DIR)
-  .on('change', (event, path) => {
-    console.log('presentation change detected... updating reveal.js source')
+  .on('change', (path) => {
+    if (app.verbose) logger.verbose(`file ${path} change detected... updating reveal.js source`)
     stage.presentation()
   })
 }

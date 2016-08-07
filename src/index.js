@@ -9,12 +9,11 @@ require('./app') // parse cli onload
 /**
  * @namespace
  * @property {object} stage exposes the stage module
- * @property {function} watch exposes the watch function
  * @property {function} serve exposes the server function
+ * @property {function} build builds the presentation into the build dir. statically servable site.
  */
 module.exports = {
   stage: require('./stage'),
-  watch: require('./watch'),
   serve: require('./serve'),
   build: require('./build'),
 }

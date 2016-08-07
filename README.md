@@ -39,10 +39,7 @@ const path = require('path')
 // copy your presentation `./src` into `./staging`
 rvlr.stage.all()
 
-// watch your `./src` for changes. deploy changes to `./staging`
-rvlr.watch()
-
-// run the reveal.js content server.  livereloads against  watched content
+// run the reveal.js content server.  livereloads against  watched source content
 rvlr.serve()
 
 // build! static assets can be served from `build/` dir
