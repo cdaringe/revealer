@@ -59,10 +59,12 @@
 <li>run revealer, <code>revealer --watch --serve</code> (_./node<em>modules/.bin/revealer</em> if you're not using npm scripts)</li>
 </ul>
 <p>you can modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!</p>
-<pre class="prettyprint source"><code>+ {project-root}
-├───node_modules
-├───package.json
-├───src</code></pre><p>:game_die::game_die::game_die::game_die::game_die: yahtzee!</p>
+<pre class="prettyprint source"><code>$ tree -L 1
+.
+├── node_modules
+├── package.json
+├── public // output from revealer --build
+└── src</code></pre><p>:game_die::game_die::game_die::game_die::game_die: yahtzee!</p>
 <p>let me use <code>revealer</code> programmatically you say.  no problem.</p>
 <pre class="prettyprint source lang-js"><code>'use strict'
 
@@ -83,7 +85,7 @@ rvlr.serve()
 rvlr.build() // optional arg for dir to build into</code></pre><big><strong>official API docs live <a href="https://cdaringe.github.io/revealer/">here</a></strong></big>
 
 <h1>why</h1><p>starting a reveal.js project should be as simple as <code>npm install reveal.js</code>, authoring some content, and hitting the go-button.  unfortunately, there's more to it.</p>
-<p>reveal.js is amazing.  however, when it's time to actually build a presentation, your choices to quickly scaffold a presentation are both less-than-ideal.  your two primary options to start building a presentation begin with either:</p>
+<p>reveal.js is amazing.  however, when it's time to actually build a presentation, your choices to quickly scaffold a presentation are both less-than-ideal.  your two primary options to start building a presentation are either:</p>
 <ol>
 <li>clone and hack the reveal.js source, or</li>
 <li>use the npm package</li>
@@ -95,19 +97,20 @@ rvlr.build() // optional arg for dir to build into</code></pre><big><strong>offi
 <li>how does your presentation repository structure look? it looks like the reveal.js source code, not simply your precious presentation content.  this yields some degree complication &amp; misdirection.</li>
 </ol>
 <p>many reveal.js projects choose this path.</p>
-<h3>consume the npm package</h3><p><strong>option #2</strong>. <code>npm install reveal.js</code> <em>is a thing</em>.  you can install it as a dependency.  however, when done so, you no longer have rails.  the helpful reveal.js assets are still nested inside of <code>node_modules/reveal.js/...</code>, but you don't have a runable solution ready to go.  that is to say, the ease of developing a presentation suddenly becomes much more difficult.  you need to manually construct your page, your assets, and development workflow, vs. using those which reveal.js already provides for you. these bells and whistles don't need to be redesigned--reveal.js' workflow is just fine!  some projects, like <a href="https://github.com/Retozi/reveal-boilerplate">reveal-boilerplate</a>, do <em>rewire</em> up a set of assets into a full presentation, using reveal.js as a pure library, BUT, is it worth reimplementing all of the reveal.js tooling again in <em>your</em> project?  i'd wager that it's probably not worth the effort.</p>
+<h3>consume the npm package</h3><p><strong>option #2</strong>. <code>npm install reveal.js</code> <em>is a thing</em>.  you can install it as a dependency.  however, when done so, you no longer have rails.  the helpful reveal.js assets are still nested inside of <code>node_modules/reveal.js/...</code>, but you don't have a runable solution ready to go.  that is to say, the ease of developing a presentation suddenly becomes much more difficult.  you need to manually construct your page, your assets, and development workflow, vs. using those which reveal.js already provides for you. these bells and whistles don't need to be redesigned--reveal.js' workflow is just fine!  some projects, like <a href="https://github.com/Retozi/reveal-boilerplate">reveal-boilerplate</a>, do <em>rewire</em> up a set of assets into a full presentation, BUT, is it worth reimplementing all of the reveal.js tooling again in your own project?  probably not!</p>
 <h3>give me the best of both worlds, please!</h3><p>here's what we want:</p>
 <ul>
 <li>quick setup time for a reveal.js project</li>
 <li>to use reveal.js as a dependency, and permit rolling version updates</li>
 <li>to keep our project source looking like <em>just</em> our source, not the reveal.js source</li>
-<li>to keep maintain ease of use, keeping the reveal.js rails intact.  that is, make  plugins/css/tooling that ship with reveal.js accessible</li>
+<li>to maintain ease of use, keeping the reveal.js rails intact.  that is, make  plugins/css/tooling that ship with reveal.js accessible</li>
 </ul>
-<p>revealer achieves these goals. specifically, it:</p>
+<p><strong>revealer achieves these goals</strong>. specifically, it:</p>
 <ul>
-<li>installs <code>reveal.js</code>'s dev dependencies</li>
+<li>installs <code>reveal.js</code>'s dev dependencies within the reveal.js dependency</li>
 <li>watches your <code>src</code> dir, and copies them into the <code>reveal.js</code> package src</li>
 <li>runs <code>reveal.js</code>'s server-watcher-browser-launcher tooling.</li>
+<li>onbuild, <code>revealer --build</code>, automatically merges your content with reveal.js' and outputs a runnable, static website!</li>
 </ul>
 <p>yahoo!</p></article>
     </section>
