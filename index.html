@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-build.html">build</a></li><li><a href="module-revealer.html">revealer</a></li><li><a href="module-serve.html">serve</a></li><li><a href="module-stage.html">stage</a><ul class='methods'><li data-type='method'><a href="module-stage.html#.all">all</a></li><li data-type='method'><a href="module-stage.html#.presentation">presentation</a></li><li data-type='method'><a href="module-stage.html#.revealjs">revealjs</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-revealer.html">revealer</a></li></ul>
 </nav>
 
 <div id="main">
@@ -50,13 +50,20 @@
         <article><h1>revealer</h1><h2>what</h2><p>build pure reveal.js presentations without cruft <em>or</em> cognitive overload.</p>
 <p><img width="600px" src="https://raw.githubusercontent.com/cdaringe/revealer/master/img/revealer.png"></img></p>
 <h2>how</h2><ul>
-<li>install, <code>npm i --save reveal.js revealer</code></li>
+<li>install<ul>
+<li><code>npm i --save reveal.js revealer</code></li>
+</ul>
+</li>
 <li>create some presentation content to serve. for example, we will use the reveal.js demo presentation.<ul>
 <li><code>mkdir -p src/</code></li>
 <li><code>cp node_modules/reveal.js/index.html ./src/</code></li>
 </ul>
 </li>
-<li>run revealer, <code>revealer --watch --serve</code> (_./node<em>modules/.bin/revealer</em> if you're not using npm scripts)</li>
+<li>run revealer<ul>
+<li><code>revealer --serve</code> (_./node<em>modules/.bin/revealer</em> if you're not using npm scripts), or</li>
+<li><code>revealer --build [dir]</code> to build the standalone static site</li>
+</ul>
+</li>
 </ul>
 <p>you can modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!</p>
 <pre class="prettyprint source"><code>$ tree -L 1
