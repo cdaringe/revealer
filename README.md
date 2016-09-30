@@ -4,18 +4,50 @@
 
 build pure reveal.js presentations without cruft _or_ cognitive overload.
 
-## how
+## install
 
-- install
-  - `npm i --save reveal.js revealer`
-- create some presentation content to serve. for example, we will use the reveal.js demo presentation.
-  - `mkdir -p src/`
-  - `cp node_modules/reveal.js/index.html ./src/`
-- run revealer
- - `revealer --serve` (_./node_modules/.bin/revealer_ if you're not using npm scripts), or
- - `revealer --build [dir]` to build the standalone static site
+`npm i --save reveal.js revealer`
 
-you can modify your content in `src`, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!
+# usage
+
+- add reveal.js content
+
+```html
+<!-- src/index.html -->
+<!doctype html>
+<html>
+	<head>...</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Slide 1</section>
+			</div>
+		</div>
+    <script src="reveal.js"></script>
+		<script>
+			Reveal.initialize({ ... });
+		</script>
+	</body>
+</html>
+```
+
+- to quickstart, use the reveal.js default!
+  - `mkdir src/ && cp node_modules/reveal.js/index.html ./src/`
+
+- next consider adding some helpful npm scripts:
+
+```json
+{
+  "scripts": {
+    "serve": "revealer --serve",
+    "build": "revealer --build [dest-dir]"
+  }
+}
+```
+
+- modify your content in `src`, watch it livereload, and still get all of reveal.js' rails included for free.
+
+**finally**, you're left with a simple, beautiful folder structure.  no cruft.  just your package.json and your presentation content!
 
 ```
 $ tree -L 1
