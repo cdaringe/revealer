@@ -48,23 +48,43 @@
 
     <section class="readme">
         <article><h1>revealer</h1><h2>what</h2><p>build pure reveal.js presentations without cruft <em>or</em> cognitive overload.</p>
-<h2>how</h2><ul>
-<li>install<ul>
-<li><code>npm i --save reveal.js revealer</code></li>
+<h2>install</h2><p><code>npm i --save reveal.js revealer</code></p>
+<h1>usage</h1><ul>
+<li>add reveal.js content</li>
+</ul>
+<pre class="prettyprint source lang-html"><code>&lt;!-- src/index.html -->
+&lt;!doctype html>
+&lt;html>
+    &lt;head>...&lt;/head>
+    &lt;body>
+        &lt;div class=&quot;reveal&quot;>
+            &lt;div class=&quot;slides&quot;>
+                &lt;section>Slide 1&lt;/section>
+            &lt;/div>
+        &lt;/div>
+    &lt;script src=&quot;reveal.js&quot;>&lt;/script>
+        &lt;script>
+            Reveal.initialize({ ... });
+        &lt;/script>
+    &lt;/body>
+&lt;/html></code></pre><ul>
+<li><p>to quickstart, use the reveal.js default!</p>
+<ul>
+<li><code>mkdir src/ &amp;&amp; cp node_modules/reveal.js/index.html ./src/</code></li>
 </ul>
 </li>
-<li>create some presentation content to serve. for example, we will use the reveal.js demo presentation.<ul>
-<li><code>mkdir -p src/</code></li>
-<li><code>cp node_modules/reveal.js/index.html ./src/</code></li>
-</ul>
-</li>
-<li>run revealer<ul>
-<li><code>revealer --serve</code> (_./node<em>modules/.bin/revealer</em> if you're not using npm scripts), or</li>
-<li><code>revealer --build [dir]</code> to build the standalone static site</li>
-</ul>
+<li><p>next consider adding some helpful npm scripts:</p>
 </li>
 </ul>
-<p>you can modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free. finally, you're left with a simple, beautiful folder structure.  no cruft--just your package.json and your presentation content!</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;scripts&quot;: {
+    &quot;serve&quot;: &quot;revealer --serve&quot;,
+    &quot;build&quot;: &quot;revealer --build [dest-dir]&quot;
+  }
+}</code></pre><ul>
+<li>modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free.</li>
+</ul>
+<p><strong>finally</strong>, you're left with a simple, beautiful folder structure.  no cruft.  just your package.json and your presentation content!</p>
 <pre class="prettyprint source"><code>$ tree -L 1
 .
 ├── node_modules
