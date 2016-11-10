@@ -41,7 +41,7 @@
   ],
   "devDependencies": {
     "gh-pages": "^0.11.0",
-    "jsdoc": "^3.4.0",
+    "jsdoc": "^3.4.3",
     "minami": "^1.1.1",
     "nyc": "^8.4.0",
     "reveal.js": "^3.3.0",
