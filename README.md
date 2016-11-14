@@ -1,6 +1,6 @@
 # revealer
 
-## what
+![](https://img.shields.io/badge/standardjs-%E2%9C%93-brightgreen.svg)
 
 build pure reveal.js presentations without cruft _or_ cognitive overload.
 
