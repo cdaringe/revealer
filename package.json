@@ -1,6 +1,6 @@
 {
   "name": "revealer",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "develop reveal.js presentations happily, without redundant source or boilerplate",
   "main": "src/index.js",
   "bin": {
