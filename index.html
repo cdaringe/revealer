@@ -51,31 +51,14 @@
 <p>build pure reveal.js presentations without cruft <em>or</em> cognitive overload.</p>
 <h2>install</h2><p><code>npm i --save reveal.js revealer</code></p>
 <h1>usage</h1><ul>
-<li>add reveal.js content</li>
-</ul>
-<pre class="prettyprint source lang-html"><code>&lt;!-- src/index.html -->
-&lt;!doctype html>
-&lt;html>
-    &lt;head>...&lt;/head>
-    &lt;body>
-        &lt;div class=&quot;reveal&quot;>
-            &lt;div class=&quot;slides&quot;>
-                &lt;section>Slide 1&lt;/section>
-            &lt;/div>
-        &lt;/div>
-    &lt;script src=&quot;reveal.js&quot;>&lt;/script>
-        &lt;script>
-            Reveal.initialize({ ... });
-        &lt;/script>
-    &lt;/body>
-&lt;/html></code></pre><ul>
-<li><p>to quickstart, use the reveal.js default!</p>
-<ul>
-<li><code>mkdir src/ &amp;&amp; cp node_modules/reveal.js/index.html ./src/</code></li>
+<li>add a reveal.js page<ul>
+<li>to quickstart, use the reveal.js default presentation:<ul>
+<li><code>mkdir -p src/ &amp;&amp; cp node_modules/reveal.js/index.html ./src/</code></li>
 </ul>
 </li>
-<li><p>next consider adding some helpful npm scripts:</p>
+</ul>
 </li>
+<li>next consider adding some helpful npm scripts:</li>
 </ul>
 <pre class="prettyprint source lang-json"><code>{
   &quot;scripts&quot;: {
@@ -83,15 +66,9 @@
     &quot;build&quot;: &quot;revealer --build [dest-dir]&quot;
   }
 }</code></pre><ul>
-<li>modify your content in <code>src</code>, watch it livereload, and still get all of reveal.js' rails included for free.</li>
+<li><code>npm run serve</code>. your presentation launches in your default browser.</li>
 </ul>
-<p><strong>finally</strong>, you're left with a simple, beautiful folder structure.  no cruft.  just your package.json and your presentation content!</p>
-<pre class="prettyprint source"><code>$ tree -L 1
-.
-├── node_modules
-├── package.json
-├── public // output from revealer --build
-└── src</code></pre><p>:game_die::game_die::game_die::game_die::game_die: yahtzee!</p>
+<p>Done! :tada:</p>
 <p>let me use <code>revealer</code> programmatically you say.  no problem.</p>
 <pre class="prettyprint source lang-js"><code>'use strict'
 
@@ -136,7 +113,12 @@ rvlr.build() // optional arg for dir to build into</code></pre><big><strong>offi
 <li>runs <code>reveal.js</code>'s server-watcher-browser-launcher tooling.</li>
 <li>onbuild, <code>revealer --build</code>, automatically merges your content with reveal.js' and outputs a runnable, static website!</li>
 </ul>
-<p>yahoo!</p></article>
+<p><strong>you're left with a simple, beautiful folder structure</strong>.  no cruft.  just your package.json and your presentation content!</p>
+<pre class="prettyprint source"><code>$ tree -L 1
+.
+├── node_modules
+├── package.json
+└── src</code></pre></article>
     </section>
 
 
