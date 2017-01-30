@@ -10,30 +10,9 @@ build pure reveal.js presentations without cruft _or_ cognitive overload.
 
 # usage
 
-- add reveal.js content
-
-```html
-<!-- src/index.html -->
-<!doctype html>
-<html>
-	<head>...</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-			</div>
-		</div>
-    <script src="reveal.js"></script>
-		<script>
-			Reveal.initialize({ ... });
-		</script>
-	</body>
-</html>
-```
-
-- to quickstart, use the reveal.js default!
-  - `mkdir src/ && cp node_modules/reveal.js/index.html ./src/`
-
+- add a reveal.js page
+  - to quickstart, use the reveal.js default presentation:
+    - `mkdir -p src/ && cp node_modules/reveal.js/index.html ./src/`
 - next consider adding some helpful npm scripts:
 
 ```json
@@ -44,21 +23,9 @@ build pure reveal.js presentations without cruft _or_ cognitive overload.
   }
 }
 ```
+- `npm run serve`. your presentation launches in your default browser.
 
-- modify your content in `src`, watch it livereload, and still get all of reveal.js' rails included for free.
-
-**finally**, you're left with a simple, beautiful folder structure.  no cruft.  just your package.json and your presentation content!
-
-```
-$ tree -L 1
-.
-├── node_modules
-├── package.json
-├── public // output from revealer --build
-└── src
-```
-
-:game_die::game_die::game_die::game_die::game_die: yahtzee!
+Done! :tada:
 
 let me use `revealer` programmatically you say.  no problem.
 
@@ -121,4 +88,13 @@ here's what we want:
   - runs `reveal.js`'s server-watcher-browser-launcher tooling.
   - onbuild, `revealer --build`, automatically merges your content with reveal.js' and outputs a runnable, static website!
 
-yahoo!
+
+**you're left with a simple, beautiful folder structure**.  no cruft.  just your package.json and your presentation content!
+
+```
+$ tree -L 1
+.
+├── node_modules
+├── package.json
+└── src
+```
