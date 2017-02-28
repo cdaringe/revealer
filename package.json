@@ -47,7 +47,7 @@
     "reveal.js": "^3.4.1",
     "shizam": "0.0.5",
     "standard": "^9.0.0",
-    "standard-format": "^2.2.2",
+    "standard-format": "^2.2.4",
     "tape": "^4.6.0"
   },
   "dependencies": {
