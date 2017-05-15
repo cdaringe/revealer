@@ -46,7 +46,7 @@
     "nyc": "^8.4.0",
     "reveal.js": "^3.4.1",
     "shizam": "0.0.5",
-    "standard": "^9.0.0",
+    "standard": "^10.0.2",
     "standard-format": "^2.2.2",
     "tape": "^4.6.0"
   },
