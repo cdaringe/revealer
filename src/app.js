@@ -52,16 +52,18 @@ if (app.build) {
 }
 
 // assert source path valid
-try {
-  fs.lstatSync(app.src)
-} catch (err) {
-  if (err.code !== 'ENOENT') throw err
-  throw new Error(
-    [
-      'no source directory provided and default `src` dir not present. please',
-      'provide a directory to `--source [dir]` or create a `src` dir'
-    ].join(' ')
-  )
+if (!app.start) {
+  try {
+    fs.lstatSync(app.src)
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err
+    throw new Error(
+      [
+        'no source directory provided and default `src` dir not present. please',
+        'provide a directory to `--source [dir]` or create a `src` dir'
+      ].join(' ')
+    )
+  }
 }
 
 // prep app constants
