@@ -12,16 +12,27 @@ const cp = require('child_process')
 const app = require('./app')
 const watch = require('./watch')
 const logger = require('./logger')
+const path = require('path')
 
 module.exports = () => {
   watch()
   if (app.verbose) logger.verbose('serving presentation via reveal.js')
-  const server = cp.spawn('grunt', ['serve'], { stdio: 'inherit', cwd: app.REVEAL_DIR })
-  server.on('error', (err) => { throw err })
+  const server = cp.spawn(
+    path.join(app.REVEAL_DIR, 'node_modules', '.bin', 'grunt'),
+    ['serve'],
+    { stdio: 'inherit', cwd: app.REVEAL_DIR }
+  )
+  server.on('error', err => {
+    throw err
+  })
 
-  const cleanExit = (code) => {
+  const cleanExit = code => {
     if (app.verbose) logger.verbose('exiting serve process')
-    try { server.kill('SIGINT') } catch (err) { /* pass */ }
+    try {
+      server.kill('SIGINT')
+    } catch (err) {
+      /* pass */
+    }
     process.exit(code)
   }
   process.on('SIGINT', cleanExit) // catch ctrl-c
