@@ -4,11 +4,7 @@
 
 the fastest (and easiest!) way to build reveal.js presentations _without any boilerplate_.
 
-## install
-
-`npm i --save reveal.js revealer`
-
-# usage
+## usage
 
 to create and serve a new, hot-reloading presentation:
 
@@ -27,7 +23,7 @@ to create and serve a new, hot-reloading presentation:
 
 let me use `revealer` programmatically you say.  no problem.  <big>**official API docs live [here](https://cdaringe.github.io/revealer/)**</big>
 
-# why
+## why
 
 starting a reveal.js project should be as simple as `npm install reveal.js`, authoring some content, and hitting the go-button.  unfortunately, there's more to it.
 
@@ -43,7 +39,7 @@ let's discuss these strategies, then discuss `revealer`'s solution to the cons o
 **option #1**.  the reveal.js source code comes with a great set of rails.  it's packed with valuable css, plugins, and tooling to get your developing your presentation quickly (e.g. file server & live reload).  however, cloning a repo then modifying it isn't really a great way to use a _library_.  instead of consuming it as a library, you end up using it as a standalone application.  what are this strategy's weaknesses?
 
 1. what happens when you need upstream updates? merge conflicts are almost guaranteed, at some point.
-1. how does your presentation repository structure look? it looks like the reveal.js source code, not simply your precious presentation content.  this yields some degree complication & misdirection.
+1. how does your presentation repository structure look? it looks like the reveal.js source code, not simply your precious presentation content.  this yields some degree of complication & misdirection.
 
 many reveal.js projects choose this path.
 
