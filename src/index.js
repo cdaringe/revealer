@@ -15,5 +15,5 @@ require('./app') // parse cli onload
 module.exports = {
   stage: require('./stage'),
   serve: require('./serve'),
-  build: require('./build'),
+  build: require('./build')
 }

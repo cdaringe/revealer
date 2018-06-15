@@ -15,7 +15,9 @@ module.exports = {
    * @returns {undefined}
    */
   presentation () {
-    if (app.verbose) logger.verbose(`copying ${app.SRC_DIR} to ${app.REVEAL_DIR}`)
+    if (app.verbose) {
+      logger.verbose(`copying ${app.SRC_DIR} to ${app.REVEAL_DIR}`)
+    }
     fs.copySync(app.SRC_DIR, app.REVEAL_DIR)
   },
 
@@ -30,16 +32,32 @@ module.exports = {
    */
   revealjs () {
     // install reveal.js dev dependencies
-    if (app.verbose) logger.verbose('preparing reveal.js package to receive presentation content')
-    const installedAppPkgs = fs.readdirSync('node_modules', { cwd: app.APP_ROOT })
+    if (app.verbose) {
+      logger.verbose(
+        'preparing reveal.js package to receive presentation content'
+      )
+    }
+    const installedAppPkgs = fs.readdirSync('node_modules', {
+      cwd: app.APP_ROOT
+    })
     fs.mkdirpSync(`${app.REVEAL_DIR}/node_modules`, { cwd: app.APP_ROOT })
-    const installedRevealOnlyPkgs = fs.readdirSync(`${app.REVEAL_DIR}/node_modules`, { cwd: app.APP_ROOT })
+    const installedRevealOnlyPkgs = fs.readdirSync(
+      `${app.REVEAL_DIR}/node_modules`,
+      { cwd: app.APP_ROOT }
+    )
     const installedRevealPkgs = installedAppPkgs.concat(installedRevealOnlyPkgs)
-    const revealDevDeps = Object.keys(require(`${app.REVEAL_DIR}/package.json`).devDependencies)
-    const installRevealDevDeps = revealDevDeps.some(reqPkg => installedRevealPkgs.indexOf(reqPkg) === -1)
+    const revealDevDeps = Object.keys(
+      require(`${app.REVEAL_DIR}/package.json`).devDependencies
+    )
+    const installRevealDevDeps = revealDevDeps.some(
+      reqPkg => installedRevealPkgs.indexOf(reqPkg) === -1
+    )
     if (installRevealDevDeps) {
       if (app.verbose) logger.verbose('installing reveal.js dev dependencies')
-      cp.execSync('npm install --development', { stdio: 'inherit', cwd: app.REVEAL_DIR })
+      cp.execSync('npm install --development', {
+        stdio: 'inherit',
+        cwd: app.REVEAL_DIR
+      })
     }
   },
 

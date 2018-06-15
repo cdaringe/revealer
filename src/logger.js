@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  verbose() {
+  verbose () {
     process.stdout.write('[revealer] ')
     console.log.apply(console.log, arguments)
   }
