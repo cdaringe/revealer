@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/standardjs-%E2%9C%93-brightgreen.svg)
 
-build pure reveal.js presentations without cruft _or_ cognitive overload.
+the fastest (and easiest!) way to build reveal.js presentations _without any boilerplate_.
 
 ## install
 
@@ -10,44 +10,22 @@ build pure reveal.js presentations without cruft _or_ cognitive overload.
 
 # usage
 
-- add a reveal.js page
-  - to quickstart, use the reveal.js default presentation:
-    - `mkdir -p src/ && cp node_modules/reveal.js/index.html ./src/`
-- next consider adding some helpful npm scripts:
+to create and serve a new, hot-reloading presentation:
+
+- `npx revealer --start`
+
+:tada:!  that's it.  your presentation is now in `src/index.html`.  next consider adding some helpful npm scripts:
 
 ```json
 {
   "scripts": {
-    "serve": "revealer --serve",
+    "start": "revealer --start",
     "build": "revealer --build [dest-dir]"
   }
 }
 ```
-- `npm run serve`. your presentation launches in your default browser.
 
-Done! :tada:
-
-let me use `revealer` programmatically you say.  no problem.
-
-```js
-'use strict'
-
-const rvlr = require('revealer')
-const path = require('path')
-
-// copy reveal.js content (from node_modules) into ./staging
-// copy your presentation `./src` into `./staging`
-rvlr.stage.all()
-
-// run the reveal.js content server.  livereloads against  watched source content
-rvlr.serve()
-
-// build! static assets can be served from `build/` dir
-rvlr.build() // optional arg for dir to build into
-
-```
-
-<big>**official API docs live [here](https://cdaringe.github.io/revealer/)**</big>
+let me use `revealer` programmatically you say.  no problem.  <big>**official API docs live [here](https://cdaringe.github.io/revealer/)**</big>
 
 # why
 

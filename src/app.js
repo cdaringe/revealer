@@ -15,6 +15,7 @@ if (path.basename(appRoot)) appRoot = process.cwd()
 
 app
   .version(pkg.version)
+  .option('--start', 'create and empty presentation if not found, then --serve')
   .option(
     '-S, --serve',
     'serve reveal.js presentation... just as reveal.js would do it! you can alternatively enter the staging directory and simply run reveal.js tasks'

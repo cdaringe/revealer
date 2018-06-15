@@ -4,7 +4,14 @@ const app = require('./app')
 const stage = require('./stage')
 const serve = require('./serve')
 const build = require('./build')
+const start = require('./start')
 
 stage.all() // yup. just always do it.
-if (app.build) build()
-if (app.serve) serve()
+
+function go () {
+  if (app.build) return build()
+  if (app.serve) return serve()
+  if (app.start) return start()
+  app.help()
+}
+go()
