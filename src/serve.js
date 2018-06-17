@@ -18,7 +18,12 @@ module.exports = () => {
   watch()
   if (app.verbose) logger.verbose('serving presentation via reveal.js')
   const server = cp.spawn(
-    path.join(app.REVEAL_DIR, 'node_modules', '.bin', 'grunt'),
+    path.join(
+      app.REVEAL_DIR,
+      'node_modules',
+      '.bin',
+      `grunt${app.IS_WIN ? '.cmd' : ''}`
+    ),
     ['serve'],
     { stdio: 'inherit', cwd: app.REVEAL_DIR }
   )

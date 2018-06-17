@@ -6,6 +6,7 @@ const pkg = require('../package.json')
 const path = require('path')
 const fs = require('fs-extra')
 const logger = require('./logger')
+const os = require('os')
 
 let appRoot = require.main.paths[1].substr(
   0,
@@ -71,7 +72,8 @@ const CONSTANTS = {
   APP_ROOT: appRoot,
   BUILD_DIR: app.build,
   SRC_DIR: app.src,
-  REVEAL_DIR: path.join(appRoot, 'node_modules', 'reveal.js')
+  REVEAL_DIR: path.join(appRoot, 'node_modules', 'reveal.js'),
+  IS_WIN: /^win/.test(os.platform())
 }
 Object.assign(app, CONSTANTS)
 if (app.verbose) logger.verbose(CONSTANTS)
