@@ -60,7 +60,8 @@ module.exports = buildDir => {
     logger.verbose(`building presentation via reveal.js to: ${buildDir}`)
     logger.verbose(`running \`grunt css uglify\` from  ${app.REVEAL_DIR}`)
   }
-  cp.execSync('node_modules/.bin/grunt css uglify', { cwd: app.REVEAL_DIR })
+  const gruntPathRelative = `node_modules/.bin/grunt${app.IS_WIN ? '.cmd' : ''}`
+  cp.execSync(`${gruntPathRelative} css uglify`, { cwd: app.REVEAL_DIR })
   fs.removeSync(buildDir)
   fs.mkdirpSync(buildDir, { cwd: app.APP_ROOT })
   const toCopy = ['css', 'js', 'lib', 'plugin']
