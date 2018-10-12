@@ -1,5 +1,7 @@
 # revealer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/cdaringe/revealer.svg)](https://greenkeeper.io/)
+
 ![](https://img.shields.io/badge/standardjs-%E2%9C%93-brightgreen.svg)
 
 the fastest (and easiest!) way to build reveal.js presentations _without any boilerplate_.
