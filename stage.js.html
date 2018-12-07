@@ -49,6 +49,7 @@ const app = require('./app')
 const fs = require('fs-extra')
 const cp = require('child_process')
 const logger = require('./logger')
+const path = require('path')
 
 module.exports = {
   /**
@@ -56,6 +57,14 @@ module.exports = {
    * @returns {undefined}
    */
   presentation () {
+    const indexFilename = path.resolve(app.SRC_DIR, 'index.html')
+    const revealIndexFilename = path.resolve(app.REVEAL_DIR, 'demo.html')
+    const isIndexPresent = fs.existsSync(indexFilename)
+    const isRevealIndexPresent = fs.existsSync(revealIndexFilename)
+    if (!isIndexPresent &amp;&amp; isRevealIndexPresent) {
+      logger.verbose(`copying ${revealIndexFilename} to ${indexFilename}`)
+      fs.copySync(revealIndexFilename, indexFilename)
+    }
     if (app.verbose) {
       logger.verbose(`copying ${app.SRC_DIR} to ${app.REVEAL_DIR}`)
     }
@@ -81,14 +90,16 @@ module.exports = {
     const installedAppPkgs = fs.readdirSync('node_modules', {
       cwd: app.APP_ROOT
     })
-    fs.mkdirpSync(`${app.REVEAL_DIR}/node_modules`, { cwd: app.APP_ROOT })
+    fs.mkdirpSync(path.resolve(app.REVEAL_DIR, 'node_modules'), {
+      cwd: app.APP_ROOT
+    })
     const installedRevealOnlyPkgs = fs.readdirSync(
-      `${app.REVEAL_DIR}/node_modules`,
+      path.resolve(app.REVEAL_DIR, 'node_modules'),
       { cwd: app.APP_ROOT }
     )
     const installedRevealPkgs = installedAppPkgs.concat(installedRevealOnlyPkgs)
     const revealDevDeps = Object.keys(
-      require(`${app.REVEAL_DIR}/package.json`).devDependencies
+      require(path.resolve(app.REVEAL_DIR, 'package.json')).devDependencies
     )
     const installRevealDevDeps = revealDevDeps.some(
       reqPkg => installedRevealPkgs.indexOf(reqPkg) === -1
