@@ -7,18 +7,18 @@
     "revealer": "src/bin.js"
   },
   "scripts": {
-    "test": "node test/",
-    "preversion": "git checkout master && git pull",
-    "docs": "mkdir -p docs && jsdoc -c .jsdoc.json src/",
     "deploy-docs": "gh-pages -d docs && rm -rf docs",
-    "postpublish": "npm run docs && npm run deploy-docs",
-    "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
-    "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
-    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish",
+    "docs": "mkdir -p docs && jsdoc -c .jsdoc.json src/",
     "format": "prettier-standard 'src/**/*.js'",
-    "lint": "standard",
     "lint-staged": "lint-staged",
-    "precommit": "run-p lint lint-staged test"
+    "lint": "standard",
+    "postpublish": "npm run docs && npm run deploy-docs",
+    "precommit": "run-p lint lint-staged test",
+    "preversion": "git checkout master && git pull",
+    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish",
+    "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
+    "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
+    "test": "node test/"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "nyc": "^8.4.0",
     "prettier-standard": "^8.0.1",
     "reveal.js": "^3.5.0",
+    "standard": "^12.0.1",
     "tape": "^4.6.0"
   },
   "dependencies": {

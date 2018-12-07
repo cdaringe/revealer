@@ -61,8 +61,6 @@ here's what we want:
   - watches your `src` dir, and copies them into the `reveal.js` package src
   - runs `reveal.js`'s server-watcher-browser-launcher tooling.
   - onbuild, `revealer --build`, automatically merges your content with reveal.js' and outputs a runnable, static website!
-        For this to work, you need to have ``grunt-cli`` installed relative to the base directory (``npm install --save-dev grunt-cli``)
-
 
 **you're left with a simple, beautiful folder structure**.  no cruft.  just your package.json and your presentation content!
 
