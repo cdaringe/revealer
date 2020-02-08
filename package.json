@@ -53,7 +53,7 @@
     "chokidar": "^1.7.0",
     "commander": "^2.9.0",
     "fs-extra": "^1.0.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.0",
     "perish": "^1.0.2"
   },
   "peerDependencies": {
